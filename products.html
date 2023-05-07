@@ -46,25 +46,75 @@
             </div>
         </nav>
     </header>
-    <main class="p-3 m-0 border-0 bd-example bd-example-row">
-        <div class="container text-center">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2">
-              <div class="col">
-                <div class="card-body">
-                    <h5 class="card-title">Один товар</h5>
-                    <p class="card-text">Структурированные данные о товаре</p>
-                    <a href="product.html" class="btn btn-primary">JSON-LD Product</a>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card-body">
-                    <h5 class="card-title">Более одного товара</h5>
-                    <p class="card-text">Структурированные данные о товарах</p>
-                    <a href="products.html" class="btn btn-primary">JSON-LD Products</a>
-                  </div>
-              </div>
+    <main>
+        <div class="main__input p-3 ">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="product-name" class="col-form-label">Наименование продукта:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <input class="form-control" type="text" id="product-name" name="product-name" required>
+                </div>
             </div>
-          </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="pproduct-image" class="col-form-label">Ссылка изображения:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <input class="form-control" type="url" id="product-image" name="product-image"
+                        placeholder="Пример: https://example.com/photos/1x1/photo.jpg" required>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="product-description" class="col-form-label">Описание продукта:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <textarea class="form-control" id="product-description" name="product-description" required
+                        rows="2"></textarea>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="product-price" class="col-form-label">Стоимость продукта:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <input class="form-control" type="number" id="product-price" name="product-price"
+                        placeholder="Пример: 3500" min="0" required>
+                </div>
+            </div>
+            <button class="btn btn-main__input btn-primary" id="myButton" type="button" onclick="generateJSONLD()"
+                data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-controls="collapseWidthExample"
+                disabled>
+                Получить script
+            </button>
+            <div>
+                <div class="card-micro card card-body" id="card-body_script"
+                    style="min-width: 300px; min-height: 300px;">
+                    <div>
+                        <span role="presentation"><span class="cm-tag cm-bracket">&lt;</span><span
+                                class="cm-tag">script</span> <span class="cm-attribute">type</span>=<span
+                                class="cm-string">"application/ld+json"</span><span
+                                class="cm-tag cm-bracket">&gt;</span>
+                        </span>
+                        <span>[</span>
+                    </div>
+                    <p id="jsonld-output"></p>
+                    <div class="span-script-bottom">
+                        <span>]</span>
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span
+                            class="cm-tag cm-bracket">&gt;</span>
+                        </span>
+                    </div>
+                </div>
+                <button class="btn btn-main__input btn-primary" onclick="copyDiv()">Копировать</button>
+                <div id="hint" style="display: none;" class=" alert alert-info alert-dismissible fade show"
+                    role="alert">
+                    <strong>Текст скопирован в буфер обмена!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label=""></button>
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="footer-main">
         <div class="container py-5">
@@ -107,8 +157,9 @@
             </div>
         </div>
     </footer>
+    <script src="js/input_products.js"></script>
+    <script src="js/products.js"></script>
     <script src="js/min.js"></script>
-    <script src="js/product.js"></script>
     <script src="js/copy.js"></script>
 </body>
 

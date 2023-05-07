@@ -9,7 +9,7 @@
     <title>JSON</title>
 </head>
 
-<body class="m-0 border-0 bd-example" style="background-color: rgb(202, 230, 230);">
+<body class="m-0 border-0 bd-example">
     <header>
         <nav class="p-3  navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -83,37 +83,63 @@
                         placeholder="Пример: 3500" min="0" required>
                 </div>
             </div>
-            <button class="btn btn-main__input btn-primary" id="myButton" type="button" onclick="generateJSONLD()"
-                data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-controls="collapseWidthExample"
-                disabled>
+            <button class="btn btn-main__input btn-primary" type="button" type="button" onclick="generateJSONLD()"
+                data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false"
+                aria-controls="collapseWidthExample">
                 Получить script
             </button>
+
             <div>
+
+
+
                 <div class="card-micro card card-body" id="card-body_script"
                     style="min-width: 300px; min-height: 300px;">
-                    <div>
+                    <div class="span-script-top">
                         <span role="presentation"><span class="cm-tag cm-bracket">&lt;</span><span
                                 class="cm-tag">script</span> <span class="cm-attribute">type</span>=<span
                                 class="cm-string">"application/ld+json"</span><span
                                 class="cm-tag cm-bracket">&gt;</span>
                         </span>
-                        <span>[</span>
                     </div>
-                    <p id="jsonld-output"></p>
+                    <p id="jsonld-output">
+
+                    </p>
                     <div class="span-script-bottom">
-                        <span>]</span>
                         <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span
                             class="cm-tag cm-bracket">&gt;</span>
                         </span>
                     </div>
                 </div>
+
+
                 <button class="btn btn-main__input btn-primary" onclick="copyDiv()">Копировать</button>
-                <div id="hint" style="display: none;" class=" alert alert-info alert-dismissible fade show"
-                    role="alert">
+
+                
+                
+
+                <div id="hint" style="display: none;" class=" alert alert-info alert-dismissible fade show" role="alert">
                     <strong>Текст скопирован в буфер обмена!</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label=""></button>
                 </div>
+
+               
+
+                <!-- JavaScript-код -->
+                <script>
+                    function showHint() {
+                        
+                    }
+                </script>
+
+
             </div>
+        </div>
+
+
+
+
+
         </div>
     </main>
     <footer class="footer-main">
@@ -157,9 +183,8 @@
             </div>
         </div>
     </footer>
-    <script src="js/input_products.js"></script>
-    <script src="js/products.js"></script>
     <script src="js/min.js"></script>
+    <script src="js/product.js"></script>
     <script src="js/copy.js"></script>
 </body>
 

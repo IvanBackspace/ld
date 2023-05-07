@@ -30,13 +30,11 @@
                                 JSON-LD
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="json.html">JSON-LD Продукта</a>
-                                <li class="dropdown">
+                                <li><a class="dropdown-item" href="json.html">JSON-LD Продукта
+                                    </a>
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                    </li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
@@ -46,26 +44,8 @@
             </div>
         </nav>
     </header>
-    <main class="p-3 m-0 border-0 bd-example bd-example-row">
-        <div class="container text-center">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2">
-              <div class="col">
-                <div class="card-body">
-                    <h5 class="card-title">Один товар</h5>
-                    <p class="card-text">Структурированные данные о товаре</p>
-                    <a href="product.html" class="btn btn-primary">JSON-LD Product</a>
-                  </div>
-              </div>
-              <div class="col">
-                <div class="card-body">
-                    <h5 class="card-title">Более одного товара</h5>
-                    <p class="card-text">Структурированные данные о товарах</p>
-                    <a href="products.html" class="btn btn-primary">JSON-LD Products</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-    </main>
+
+        
     <footer class="footer-main">
         <div class="container py-5">
             <div class="row">
@@ -81,8 +61,7 @@
                     <h5>Инструменты</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2"><a href="json.html" class="nav-link p-0 text-body-secondary">JSON-LD
-                                Продукта</a>
-                        </li>
+                                Продукта</a></li>
                     </ul>
                 </div>
 
@@ -107,9 +86,44 @@
             </div>
         </div>
     </footer>
+
+    <input type="text" id="url-input">
+    <button onclick="getVideoDescription()">Получить описание</button>
+    
+    <script>
+      function getVideoDescription() {
+        // Получаем значение поля ввода
+        const url = document.getElementById('url-input').value;
+    
+        // Извлекаем идентификатор видео из URL
+        const videoId = url.split('v=')[1];
+    
+        // Формируем запрос к YouTube API
+        const requestUrl = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=AIzaSyBo3tDaa6kGjMGRBVXpLHxX2Au9e8BBBWk`;
+    
+        // Отправляем запрос и обрабатываем ответ
+        fetch(requestUrl)
+          .then(response => response.json())
+          .then(data => {
+            // Получаем заголовок видео из ответа
+            const title = data.items[0].snippet.title;
+    
+            // Сохраняем заголовок в переменной
+            const description = title;
+    
+            // Делаем что-то с описанием, например, выводим его на страницу
+            alert(description);
+          })
+          .catch(error => {
+            console.error(error);
+            alert('Произошла ошибка при получении описания видео');
+          });
+      }
+    </script>
+
+
     <script src="js/min.js"></script>
     <script src="js/product.js"></script>
-    <script src="js/copy.js"></script>
 </body>
 
 </html>
