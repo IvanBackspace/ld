@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>JSON</title>
+</head>
+
+<body class="m-0 border-0 bd-example" style="background-color: rgb(202, 230, 230);">
+    <header>
+        <nav class="p-3  navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="home.html">LD</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="home.html">Главная</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                JSON-LD
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="json.html">JSON-LD Продукта</a>
+                                <li class="dropdown">
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                        <button class="btn btn-primary" type="submit">Поиск</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="main__input p-3 ">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="product-name" class="col-form-label">Наименование продукта:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <input class="form-control" type="text" id="product-name" name="product-name" required>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="pproduct-image" class="col-form-label">Ссылка изображения:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <input class="form-control" type="url" id="product-image" name="product-image"
+                        placeholder="Пример: https://example.com/photos/1x1/photo.jpg" required>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="product-description" class="col-form-label">Описание продукта:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <textarea class="form-control" id="product-description" name="product-description" required
+                        rows="2"></textarea>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="product-price" class="col-form-label">Стоимость продукта:</label>
+                </div>
+                <div class="col-auto col-auto__input">
+                    <input class="form-control" type="number" id="product-price" name="product-price"
+                        placeholder="Пример: 3500" min="0" required>
+                </div>
+            </div>
+            <button class="btn btn-main__input btn-primary" id="myButton" type="button" onclick="generateJSONLD()"
+                data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-controls="collapseWidthExample"
+                disabled>
+                Получить script
+            </button>
+            <div>
+                <div class="card-micro card card-body" id="card-body_script"
+                    style="min-width: 300px; min-height: 300px;">
+                    <div>
+                        <span role="presentation"><span class="cm-tag cm-bracket">&lt;</span><span
+                                class="cm-tag">script</span> <span class="cm-attribute">type</span>=<span
+                                class="cm-string">"application/ld+json"</span><span
+                                class="cm-tag cm-bracket">&gt;</span>
+                        </span>
+                        <span>[</span>
+                    </div>
+                    <p id="jsonld-output"></p>
+                    <div class="span-script-bottom">
+                        <span>]</span>
+                        <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">script</span><span
+                            class="cm-tag cm-bracket">&gt;</span>
+                        </span>
+                    </div>
+                </div>
+                <button class="btn btn-main__input btn-primary" onclick="copyDiv()">Копировать</button>
+                <div id="hint" style="display: none;" class=" alert alert-info alert-dismissible fade show"
+                    role="alert">
+                    <strong>Текст скопирован в буфер обмена!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label=""></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-main">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Разделы</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="home.html"
+                                class="nav-link p-0 text-body-secondary">Главная</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Инструменты</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="json.html" class="nav-link p-0 text-body-secondary">JSON-LD
+                                Продукта</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-2 mb-3">
+                    <h5></h5>
+                </div>
+
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5>Subscribe to our newsletter</h5>
+                        <p>Monthly digest of what's new and exciting from us.</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Почтовый ящик">
+                            <button class="btn btn-primary" type="button">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2023 LD</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/input_products.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/min.js"></script>
+    <script src="js/copy.js"></script>
+</body>
+
+</html>
